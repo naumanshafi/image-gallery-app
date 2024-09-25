@@ -1,0 +1,181 @@
+/* Navbar container */
+.navbar {
+    border: 1px solid #EBEBEB;
+    margin-bottom: 104px;
+    display: flex;
+    justify-content: space-between;
+    padding: 14.5px 79px;
+    max-width: 1440px;
+    box-sizing: border-box;
+  }
+  
+  /* Logo styles */
+  .logo-link {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer; /* Show hand pointer when hovering over PhotoDrag */
+    display: inline-block;
+  }
+  
+  .logo-highlight {
+    color: #007bff;
+  }
+  
+  /* Language and Login container */
+  .language-cta {
+    display: flex;
+    align-items: center;
+    position: relative; /* Required to position the dropdown */
+  }
+  
+  /* Language section */
+  .language {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  
+  .icon-world {
+    margin-right: 12px;
+    display: flex;
+  }
+  
+  .icon-world-img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .language-options {
+    display: flex;
+    align-items: center;
+  }
+  
+  .language-text {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #2B2B2B;
+    margin-right: 6px;
+  }
+  
+  .icon-chevron-img {
+    width: 11px;
+    height: 7px;
+  }
+  
+  /* Dropdown menu for languages */
+  .language-dropdown {
+    position: absolute;
+    top: 100%; /* Positioned right under the language text */
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .language-option {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  .language-option:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Login button */
+  .login-btn {
+    background-color: #007BFF;
+    border-radius: 100px;
+    padding: 14px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; /* Show hand pointer when hovering over Login button */
+  }
+  
+  .login-text {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 1024px) {
+    .navbar {
+      padding: 10px 50px;
+    }
+  
+    .logo-link {
+      font-size: 1.3rem;
+    }
+  
+    .login-btn {
+      padding: 10px 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 20px;
+    }
+  
+    .language-cta {
+      margin-top: 10px;
+      justify-content: center;
+    }
+  
+    .logo-link {
+      font-size: 1.2rem;
+    }
+  
+    .login-btn {
+      padding: 10px 15px;
+      width: auto;
+    }
+  }
+  
+  .language-selector{
+    display: flex;
+  }
+  @media (max-width: 480px) {
+    .navbar {
+      padding: 8px 10px;
+    }
+  
+    .logo-link {
+      font-size: 1.1rem;
+    }
+  
+    .login-btn {
+      padding: 8px 12px;
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .language-cta {
+      flex-direction: column;
+      margin-top: 8px;
+    }
+  
+    .icon-chevron-img {
+      width: 9px;
+      height: 6px;
+    }
+  
+    .language-text {
+      font-size: 14px;
+    }
+  }
+  
