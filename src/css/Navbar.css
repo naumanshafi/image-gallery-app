@@ -5,8 +5,10 @@
     display: flex;
     justify-content: space-between;
     padding: 14.5px 79px;
-    max-width: 1440px;
+    width: 100%;
     box-sizing: border-box;
+    z-index: 1000;
+    position: fixed;
   }
   
   /* Logo styles */

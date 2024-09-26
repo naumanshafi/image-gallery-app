@@ -1,0 +1,202 @@
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    bottom: -100px;
+}
+
+.upload-title {
+    margin-bottom: 24px;
+    font-family: 'Bebas Neue';
+    font-weight: 400;
+    font-size: 48px;
+    color: #000000;
+    text-align: center;
+}
+
+.image-preview-container {
+    margin-bottom: 20px;
+}
+
+.uploaded-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.upload-dropzone {
+    box-shadow: 0px 0px 20px 0px rgba(216, 221, 241, 0.5);
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 0;
+    width: 700px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 1px dashed #007BFF;
+}
+
+.upload-dropzone.drag-over {
+    background-color: #f8f9fa;
+    border: 2px dashed #007BFF;
+}
+
+.upload-progress-container {
+    text-align: center;
+}
+
+.upload-progress-bar {
+    width: 50%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.upload-progress {
+    width: 0;
+    height: 100%;
+    background-color: #007BFF;
+    border-radius: 5px;
+    transition: width 0.5s ease;
+}
+
+.upload-file-info {
+    font-size: 14px;
+    color: #707070;
+}
+
+.upload-success {
+    text-align: center;
+}
+
+.upload-more-button {
+    margin-top: 20px;
+    background-color: #ffffff;
+    color: #007BFF;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    border-color: #007BFF;
+    border-style: solid;
+}
+
+.drop-here {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drop-here-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.drop-here-text {
+    font-family: 'Raleway';
+    font-weight: bold;
+    font-size: 25px;
+    color: #A7A7A7;
+}
+
+.tablerdrag-drop {
+    position: relative;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+}
+
+.upload-drag-icon {
+    margin-bottom: 20px;
+}
+
+.upload-drag-img {
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    translate: -50% 0;
+    width: 62px;
+    height: 62px;
+}
+
+.upload-vector {
+    width: 25.3px;
+    height: 25.3px;
+}
+
+.upload-button {
+    background-color: #007BFF;
+    border-radius: 100px;
+    padding: 11px 0;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.upload-button-text {
+    font-family: 'Raleway';
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+/* Footer with additional options */
+.upload-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-footer-text {
+    margin-bottom: 7px;
+    font-family: 'Raleway';
+    font-weight: 400;
+    font-size: 16px;
+    color: #1C1C1C;
+}
+
+.upload-footer-subtext {
+    font-family: 'Raleway';
+    font-weight: 400;
+    font-size: 12px;
+    color: #3F3F3F;
+}
+
+.uploading-text {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #000000;
+}
+
+.picture-uploading-text {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #000000;
+}
+
+.file-size-text {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0;
+    color: #667085;
+    text-align: left;
+}
