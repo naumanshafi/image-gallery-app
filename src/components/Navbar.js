@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import '../css/Navbar.css';
 
 function Navbar() {
-  const [language, setLanguage] = useState('EN'); // Set default language to English
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // To handle dropdown visibility
+  const [language, setLanguage] = useState('EN');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
-    setIsDropdownOpen(false); // Close dropdown after selection
+    setIsDropdownOpen(false);
   };
 
   return (

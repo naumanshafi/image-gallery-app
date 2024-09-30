@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import Navbar from './components/Navbar';
 import ImageUpload from './components/ImageUpload';
 import ImageGallery from './components/ImageGallery';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { firestore } from './firebase';
+import '../src/css/App.css';
 
 function App() {
-  // State to store uploaded images
   const [images, setImages] = useState([]); 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -21,7 +20,7 @@ function App() {
       const getImages = querySnapshot.docs.map((doc) => doc.data().url);
       setImages(getImages);
       console.log(getImages);
-      setTotalPages(Math.ceil(getImages.length / 6)); // Set total pages based on image count
+      setTotalPages(Math.ceil(getImages.length / 6));
     } catch (error) {
       console.error('Error fetching images:', error);
     }
