@@ -41,42 +41,50 @@ function ImageUpload({ setImages, fetchImages }) {
     handleUpload(file);
   };
 
+  const generateUniqueFileName = (file) => {
+    const timestamp = new Date().getTime();
+    const fileExtension = file.name.split('.').pop();
+    const uniqueFileName = `${file.name.replace(`.${fileExtension}`, '')}_${timestamp}.${fileExtension}`;
+    return uniqueFileName;
+  };
+
   // Handle upload process
   const handleUpload = (file) => {
     if (!file) return;
     setUploading(true);
     setUploadComplete(false);
 
-    const storageRef = ref(storage, `images/${file.name}`);
+    const uniqueFileName = generateUniqueFileName(file);
+    const storageRef = ref(storage, `images/${uniqueFileName}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        const progressValue = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setProgress(progressValue);
-      },
-      (error) => {
-        console.error('Upload failed:', error);
-        setUploading(false);
-      },
+        'state_changed',
+        (snapshot) => {
+            const progressValue = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            setProgress(progressValue);
+        },
+        (error) => {
+            console.error('Upload failed:', error);
+            setUploading(false);
+        },
       async () => {
         try {
-          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-          console.log('File available at:', downloadURL); 
-          setUploadedFileURL(downloadURL);
-          setImages((prev) => [...prev, downloadURL]);
-          await addDoc(collection(firestore, 'images'), {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+            console.log('File available at:', downloadURL); 
+            setUploadedFileURL(downloadURL);
+            setImages((prev) => [...prev, downloadURL]);
+            await addDoc(collection(firestore, 'images'), {
             url: downloadURL,
             uploadDate: new Date(),
-          });
-        //   await addDoc(collection(firestore, 'images'), { url: downloadURL });
-          setUploading(false);
-          setUploadComplete(true);
-          fetchImages();
+            });
+
+            setUploading(false);
+            setUploadComplete(true);
+            fetchImages();
         } catch (error) {
-          console.error('Error getting download URL:', error);
-          setUploading(false);
+            console.error('Error getting download URL or adding to Firestore:', error);
+            setUploading(false);
         }
       }
     );
@@ -89,7 +97,7 @@ function ImageUpload({ setImages, fetchImages }) {
     setUploadedFilePreview(null);
     setUploadedFileURL(null);
     setFileSize(null);
-    setProgress(0);  // Reset progress
+    setProgress(0);
   };
 
   // Trigger file input click

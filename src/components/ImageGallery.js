@@ -68,7 +68,7 @@ function ImageGallery({ images, currentPage, totalPages, handleNextPage, handleP
             <img src={image.url} alt={`Uploaded ${index}`} className="image-gallery__image" />
             <div className="image-gallery__icons">
               <button className="image-gallery__icon" onClick={() => handleViewImage(image.url)}>
-                <img src="/assets/vectors/eye.svg" alt="View" />
+                <img src="/assets/vectors/eye.svg" alt="View in Full Size" />
               </button>
               <button className="image-gallery__icon" onClick={() => handleOpenDeleteModal(image)}>
                 <img src="/assets/vectors/delete.svg" alt="Delete" />
