@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# PhotoDrag - Image Upload and Gallery App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+PhotoDrag is a React-based application that allows users to upload images and display them in a gallery. Users can drag and drop images or upload them via file input. Images are stored in Firebase and displayed with pagination.
+
+## Features
+
+- Drag-and-drop or file upload functionality for images.
+- Display images in a gallery with pagination.
+- View full-size images in a modal.
+- Delete images with a confirmation modal.
+- Images are stored in Firebase Firestore and Firebase Storage.
+- Multi-language support with a language selector in the Navbar.
+- Responsive and modern UI using React.
+
+## Tech Stack
+
+- **React**: Frontend library for building the user interface.
+- **Firebase**: Used for authentication, Firestore for storing image data, and Firebase Storage for image storage.
+- **CSS**: Custom styles for the user interface.
+
+## Project Structure
+
+```bash
+├── src
+│   ├── components
+│   │   ├── Navbar.js
+│   │   ├── ImageUpload.js
+│   │   ├── ImageGallery.js
+│   ├── css
+│   │   ├── App.css
+│   │   ├── Navbar.css
+│   │   ├── ImageUpload.css
+│   │   ├── ImageGallery.css
+│   ├── firebase.js
+│   ├── App.js
+│   ├── index.js
+└── .env
+```
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- **Node.js** and **npm** installed on your local machine.
+- A Firebase project set up for authentication, Firestore, and Firebase Storage.
+
+## Getting Started
+
+Follow these instructions to set up and run the project locally.
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/naumanshafi/image-gallery-app.git
+cd image-gallery-app
+```
+
+### 2. Install dependencies
+
+Run the following command to install the necessary dependencies:
+
+```bash
+npm install
+```
+
+### 3. Firebase Configuration
+
+Create a `.env` file in the root directory of your project and add your Firebase credentials:
+
+```
+REACT_APP_FIREBASE_API_KEY=YOUR_API_KEY
+REACT_APP_FIREBASE_AUTH_DOMAIN=YOUR_AUTH_DOMAIN
+REACT_APP_FIREBASE_PROJECT_ID=YOUR_PROJECT_ID
+REACT_APP_FIREBASE_STORAGE_BUCKET=YOUR_STORAGE_BUCKET
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=YOUR_MESSAGING_SENDER_ID
+REACT_APP_FIREBASE_APP_ID=YOUR_APP_ID
+REACT_APP_FIREBASE_MEASUREMENT_ID=YOUR_MEASUREMENT_ID
+```
+
+> **Important**: Replace the placeholders (YOUR_API_KEY, etc.) with your actual Firebase credentials from your Firebase Console.
+
+### 4. Firebase Setup
+
+- Go to [Firebase Console](https://console.firebase.google.com/).
+- Create a new project (if you don’t have one).
+- Enable **Firestore Database** and **Firebase Storage** in the Firebase Console.
+
+### 5. Running the Application
+
+Once the configuration is complete, you can start the development server by running:
+
+```bash
+npm start
+```
+
+The app should now be running at [http://localhost:3000](http://localhost:3000).
+
+### 6. Deploying to Production
+
+For deploying the application, you can build it by running:
+
+```bash
+npm run build
+```
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+- `npm start`: Runs the app in the development mode.
+- `npm run build`: Builds the app for production to the `build` folder.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## License
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project is licensed under the MIT License.
 
-### `npm test`
+## Acknowledgements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [React](https://reactjs.org/)
+- [Firebase](https://firebase.google.com/)
+- [Node.js](https://nodejs.org/)
+```
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This version removes the actual Firebase credentials and uses placeholders. Make sure to replace them with your own credentials before setting up.
