@@ -4,7 +4,7 @@ import { storage, firestore } from '../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import '../css/ImageUpload.css';
 
-function ImageUpload({ setImages, setProgress, fetchImages }) {
+function ImageUpload({ setImages, fetchImages }) {
   const fileInputRef = useRef(null);
   const [uploading, setUploading] = useState(false);
   const [uploadComplete, setUploadComplete] = useState(false);
@@ -12,7 +12,7 @@ function ImageUpload({ setImages, setProgress, fetchImages }) {
   const [uploadedFileURL, setUploadedFileURL] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [fileSize, setFileSize] = useState(null);
-  const [progress, updateProgress] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   // Handle drag and drop
   const handleDrop = (e) => {
@@ -56,7 +56,6 @@ function ImageUpload({ setImages, setProgress, fetchImages }) {
       (snapshot) => {
         const progressValue = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setProgress(progressValue);
-        updateProgress(progressValue);
       },
       (error) => {
         console.error('Upload failed:', error);
@@ -87,8 +86,7 @@ function ImageUpload({ setImages, setProgress, fetchImages }) {
     setUploadedFilePreview(null);
     setUploadedFileURL(null);
     setFileSize(null);
-    updateProgress(0);  // Reset progress
-    setProgress(0);  // Reset parent progress if needed
+    setProgress(0);  // Reset progress
   };
 
   // Trigger file input click
