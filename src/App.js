@@ -28,7 +28,6 @@ function App() {
     }
   };
   
-
   // Fetch images when component mounts
   useEffect(() => {
     fetchImages();
