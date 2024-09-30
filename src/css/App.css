@@ -15,3 +15,46 @@
   align-items: center;
   box-sizing: border-box;
 }
+
+
+/* variables.css or colors.css */
+/* :root {
+  --primary-color: #007BFF;
+  --secondary-color: #ffffff;
+  --background-color: #f8f9fa;
+  --border-color: #007BFF;
+  --progress-bar-bg: #e0e0e0;
+  --progress-bar-color: #007BFF;
+  --text-color-primary: #000000;
+  --text-color-secondary: #707070;
+  --text-color-footer: #1C1C1C;
+  --text-color-footer-subtext: #3F3F3F;
+  --drag-over-bg-color: #f8f9fa;
+  --drag-over-border-color: #007BFF;
+  --upload-file-info-color: #667085;
+  --drop-here-text-color: #A7A7A7;
+
+  --gallery-bg-color: #ffffff;
+  --gallery-border-color: #EAECF0;
+  --pagination-button-bg: #ffffff;
+  --pagination-button-color: #007BFF;
+  --pagination-button-hover-bg: #0056b3;
+  --pagination-button-hover-color: #ffffff;
+  --pagination-details-color: #344054;
+  --modal-overlay-color: rgba(0, 0, 0, 0.8);
+  --modal-content-bg: #fff;
+  --modal-close-color: #000;
+  --confirm-button-bg: #d9534f;
+  --cancel-button-bg: #5bc0de;
+  --button-text-color: white;
+  --icons-bg-hover: rgba(0, 0, 0, 0.5);
+  --gallery-icon-color: #ffffff;
+
+
+    --primary-color: #007BFF;
+    --secondary-color: #ffffff;
+    --text-color-primary: #333;
+    --text-color-secondary: #2B2B2B;
+    --border-color: #ccc;
+    --hover-bg-color: #f0f0f0;
+} */
