@@ -14,28 +14,35 @@ function App() {
   // Fetch images from Firestore based on upload date and time
   const fetchImages = async () => {
     try {
-      // Query images ordered by upload date (most recent first)
-      const imagesQuery = query(collection(firestore, 'images'));
+      const imagesQuery = query(collection(firestore, 'images'), orderBy('uploadDate', 'asc'));
       const querySnapshot = await getDocs(imagesQuery);
-      const getImages = querySnapshot.docs.map((doc) => doc.data().url);
+      const getImages = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        url: doc.data().url,
+        uploadDate: doc.data().uploadDate,
+      }));
       setImages(getImages);
-      console.log(getImages);
       setTotalPages(Math.ceil(getImages.length / 6));
     } catch (error) {
       console.error('Error fetching images:', error);
     }
   };
+  
 
   // Fetch images when component mounts
   useEffect(() => {
     fetchImages();
-  }, []); // Fetch once when the component mounts
+  }, []);
 
   // Handle pagination
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
+  };
+
+  const handleImageDelete = (imageId) => {
+    setImages((prevImages) => prevImages.filter((image) => image.id !== imageId));
   };
 
   const handlePreviousPage = () => {
@@ -59,6 +66,7 @@ function App() {
           totalPages={totalPages}
           handleNextPage={handleNextPage}
           handlePreviousPage={handlePreviousPage}
+          handleImageDelete={handleImageDelete}
         />
       </div>
     </div>

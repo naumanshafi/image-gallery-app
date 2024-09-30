@@ -4,7 +4,7 @@ import { doc, deleteDoc } from 'firebase/firestore';
 import { storage, firestore } from '../firebase';
 import '../css/ImageGallery.css';
 
-function ImageGallery({ images, currentPage, totalPages, handleNextPage, handlePreviousPage }) {
+function ImageGallery({ images, currentPage, totalPages, handleNextPage, handlePreviousPage, handleImageDelete }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -24,10 +24,10 @@ function ImageGallery({ images, currentPage, totalPages, handleNextPage, handleP
   };
 
   // Open the delete modal
-  const handleOpenDeleteModal = (url) => {
-    setImageToDelete(url);
+  const handleOpenDeleteModal = (image) => {
+    setImageToDelete(image);
     setIsDeleteModalOpen(true);
-  };
+  };  
 
   // Close the delete modal
   const handleCloseDeleteModal = () => {
@@ -39,16 +39,16 @@ function ImageGallery({ images, currentPage, totalPages, handleNextPage, handleP
   const handleConfirmDelete = async () => {
     try {
       if (imageToDelete) {
-        const imageRef = ref(storage, imageToDelete);
+        const imageRef = ref(storage, imageToDelete.url);
         await deleteObject(imageRef);
 
-        // Delete from Firestore
-        const imageDoc = doc(firestore, 'images', imageToDelete);
+        // Delete the document from Firestore
+        const imageDoc = doc(firestore, 'images', imageToDelete.id);
         await deleteDoc(imageDoc);
 
-        window.location.reload();
+        handleImageDelete(imageToDelete.id);
+        handleCloseDeleteModal();
       }
-      handleCloseDeleteModal();
     } catch (error) {
       console.error('Error deleting image:', error);
     }
@@ -63,26 +63,24 @@ function ImageGallery({ images, currentPage, totalPages, handleNextPage, handleP
       {/* Image grid */}
       <div className="image-gallery__grid">
         {paginatedImages.length > 0 ? (
-          paginatedImages.map((url, index) => (
-            <div className="image-gallery__item" key={index}>
-              <img src={url} alt={`Uploaded ${index}`} className="image-gallery__image" />
-
-              {/* Icon buttons (Eye for viewing, Trash for deleting) */}
-              <div className="image-gallery__icons">
-                <button className="image-gallery__icon" onClick={() => handleViewImage(url)}>
-                  <img src="/assets/vectors/eye.svg" alt="View" /> {/* Eye icon */}
-                </button>
-                <button className="image-gallery__icon" onClick={() => handleOpenDeleteModal(url)}>
-                  <img src="/assets/vectors/delete.svg" alt="Delete" /> {/* Delete icon */}
-                </button>
-              </div>
+          paginatedImages.map((image, index) => (
+          <div className="image-gallery__item" key={image.id}>
+            <img src={image.url} alt={`Uploaded ${index}`} className="image-gallery__image" />
+            <div className="image-gallery__icons">
+              <button className="image-gallery__icon" onClick={() => handleViewImage(image.url)}>
+                <img src="/assets/vectors/eye.svg" alt="View" />
+              </button>
+              <button className="image-gallery__icon" onClick={() => handleOpenDeleteModal(image)}>
+                <img src="/assets/vectors/delete.svg" alt="Delete" />
+              </button>
             </div>
-          ))
-        ) : (
-          <div className="image-gallery__empty">
-            <p>No images to display</p>
           </div>
-        )}
+        ))
+      ) : (
+        <div className="image-gallery__empty">
+          <p>No images to display</p>
+        </div>
+      )}
       </div>
 
       {/* Modal for viewing the full image */}
@@ -91,14 +89,14 @@ function ImageGallery({ images, currentPage, totalPages, handleNextPage, handleP
           <div className="image-modal__content">
             {isImageLoaded && (
               <span className="image-modal__close" onClick={handleCloseModal}>
-                <img src="/assets/vectors/cancel.svg" alt="Close" /> {/* Close icon */}
+                <img src="/assets/vectors/cancel.svg" alt="Close" />
               </span>
             )}
             <img
               src={selectedImage}
               alt="Full view"
               className="image-modal__image"
-              onLoad={() => setIsImageLoaded(true)} // Set true once image is fully loaded
+              onLoad={() => setIsImageLoaded(true)}
             />
           </div>
         </div>
@@ -112,7 +110,7 @@ function ImageGallery({ images, currentPage, totalPages, handleNextPage, handleP
             <p>Are you sure you want to delete this image?</p>
             <div className="delete-modal__actions">
               <button onClick={handleConfirmDelete} className="delete-modal__confirm">
-                Yes, Delete
+                Delete
               </button>
               <button onClick={handleCloseDeleteModal} className="delete-modal__cancel">
                 Cancel

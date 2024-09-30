@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { storage, firestore } from '../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc} from 'firebase/firestore';
 import '../css/ImageUpload.css';
 
 function ImageUpload({ setImages, fetchImages }) {
@@ -36,7 +36,6 @@ function ImageUpload({ setImages, fetchImages }) {
   // Handle file selection via input
   const handleFileSelect = (e) => {
     const file = e.target.files[0];
-    // Set file size in MB
     setFileSize((file.size / (1024 * 1024)).toFixed(2));
     setUploadedFilePreview(URL.createObjectURL(file));
     handleUpload(file);
@@ -67,7 +66,11 @@ function ImageUpload({ setImages, fetchImages }) {
           console.log('File available at:', downloadURL); 
           setUploadedFileURL(downloadURL);
           setImages((prev) => [...prev, downloadURL]);
-          await addDoc(collection(firestore, 'images'), { url: downloadURL });
+          await addDoc(collection(firestore, 'images'), {
+            url: downloadURL,
+            uploadDate: new Date(),
+          });
+        //   await addDoc(collection(firestore, 'images'), { url: downloadURL });
           setUploading(false);
           setUploadComplete(true);
           fetchImages();
