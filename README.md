@@ -2,6 +2,8 @@
 
 PhotoDrag is a React-based application that allows users to upload images and display them in a gallery. Users can drag and drop images or upload them via file input. Images are stored in Firebase and displayed with pagination.
 
+![PhotoDrag Screenshot](https://github.com/naumanshafi/image-gallery-app/blob/main/public/Photo%20Drag.png)
+
 ## Features
 
 - Drag-and-drop or file upload functionality for images.
